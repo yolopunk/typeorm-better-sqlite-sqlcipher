@@ -1,0 +1,1 @@
+# typeorm-better-sqlite-sqlcipher

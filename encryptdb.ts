@@ -1,0 +1,7 @@
+const db = require('better-sqlite3-multiple-ciphers')('foobar.db', { verbose: console.log })
+db.pragma("cipher='sqlcipher'")
+db.pragma(`rekey='secret-key'`)
+db.prepare(`CREATE TABLE "post" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar NOT NULL, "text" varchar NOT NULL)`).run()
+const stmt = db.prepare('INSERT INTO post (title, text) VALUES (?, ?)')
+const info = stmt.run('Joey', 'my homie')
+db.close()
